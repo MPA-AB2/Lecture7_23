@@ -29,10 +29,10 @@
 3. Use the provided MATLAB function for evaluation of the results and submit the output to the provided [**Excel**](https://docs.google.com/spreadsheets/d/15eg6iIOtin0n9goFp0bsctVz1MBe2WBD/edit?usp=sharing&ouid=112211468254352441667&rtpof=true&sd=true) table. The function *evaluate_segmentation.m* called as:
 `[dice_scores] = evaluate_segmentation(gt_path, segmented_path)`,
 has the following inputs:
-  * gt_path – path into the **public** folder containing GT masks,
-  * segmented_path - path into OTHER folder containing YOUR segmentation masks - grayscale **maskXX.png** images, uint8 with labels 0, 1, 2, 3, 4,
+  * *gt_path* – path into the **public** folder containing GT masks,
+  * *segmented_path* - path into OTHER folder containing YOUR segmentation masks - grayscale **maskXX.png** images, uint8 with labels 0, 1, 2, 3, 4,
 and outputs:
-  * dice_scores – structure of results: mean Dice coefficient and its standard deviaton. Further, the structure contains detailed info about individual images and labels.
-4. Store your implemented algorithm as a form of function `[] = segment_histo(pathToImages, pathOfResults)`, where:
-  * *pathToImages* is the path to the **public/blind** folder containing images and GT masks,
-  * *pathOfResults* is the path to the **results** folder containing your segmentations in the same format, data type and names as GT masks. The function will be used for evaluation of universality of your solution using another input images. **Push** your program implementations into GitHub repository **Lecture7_23** using the **branch of your team** (stage changed -> fill commit message -> sign off -> commit -> push -> select *NAME_OF_YOUR_TEAM* branch -> push -> manager-core -> web browser -> fill your credentials).
+  * *dice_scores* – structure of results: mean Dice coefficient and its standard deviaton. Further, the structure contains detailed info about individual images and labels.
+4. Store your implemented algorithm as a form of function `segment_histo(path_to_images, path_of_results)`, where:
+  * *path_to_images* is the path to the **public/blind** folder containing images and GT masks,
+  * *path_of_results* is the path to the **results** folder containing your segmentations in the same format, data type and names as GT masks. The function will be used for evaluation of universality of your solution using another input images. **Push** your program implementations into GitHub repository **Lecture7_23** using the **branch of your team** (stage changed -> fill commit message -> sign off -> commit -> push -> select *NAME_OF_YOUR_TEAM* branch -> push -> manager-core -> web browser -> fill your credentials).

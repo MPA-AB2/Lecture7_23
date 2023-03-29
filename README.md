@@ -18,7 +18,7 @@
 
 ## Tasks to do
 
-1. Download the histological data in a zip folder from [here](https://www.vut.cz/www_base/vutdisk.php?i=311673ad45). Extract the content of the zip folder OUTSIDE **Lecture7_23** folder. It contains folder **public** with 41 images *imXX.png* and 41 ground truth segmentation masks **maskXX.png**.
+1. Download the histological data in a zip folder from [here](https://www.vut.cz/www_base/vutdisk.php?i=311673ad45). Extract the content of the zip folder OUTSIDE **Lecture7_23** folder. It contains folder **public** with 41 images **imXX.png** and 41 ground truth segmentation masks **maskXX.png**.
 2. Use any automatic segmentation method to segment five categories in histologicla slices:
   * background,
   * tumour,

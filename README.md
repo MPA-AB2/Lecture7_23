@@ -1,6 +1,6 @@
 # Lecture7 - IMAGE SEGMENTATION
 
-[**Benchmark Results**](https://moodle.vut.cz/pluginfile.php/411642/mod_resource/content/1/L7_BenchmarkSegmentation.xlsx%20-%20List1.pdf)
+[**Final Benchmark Results**](https://docs.google.com/spreadsheets/d/1b8PNsH4d6a9KSfeyH94roA728uADy_DA/edit#gid=1879335341)
 
 ## Preparation
 
@@ -26,7 +26,7 @@
   * necrosis,
   * fat.
 
-3. Use the provided MATLAB function for evaluation of the results and submit the output to the provided [**Excel**](https://docs.google.com/spreadsheets/d/1eVXez4Z985BxftOCF1nldSYCXMIimW3E/edit?usp=sharing&ouid=105272487043795807825&rtpof=true&sd=true) table. The function *evaluate_segmentation.m* called as:
+3. Use the provided MATLAB function for evaluation of the results and submit the output to the provided [**Excel**](https://docs.google.com/spreadsheets/d/15eg6iIOtin0n9goFp0bsctVz1MBe2WBD/edit?usp=sharing&ouid=112211468254352441667&rtpof=true&sd=true) table. The function *evaluate_segmentation.m* called as:
 `[dice_scores] = evaluate_segmentation(gt_path, segmented_path)`,
 has the following inputs:
   * gt_path – path into the **public** folder containing GT masks,

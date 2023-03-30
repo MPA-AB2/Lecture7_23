@@ -15,13 +15,13 @@ for i = 1:numFiles
     maskNecro = zeros(size(mask));
     maskStroma = zeros(size(mask));
     
-    % Colorcode map
+%     % Colorcode map
 %     mR = mask == 1 | mask == 4;
 %     mG = mask == 2 | mask == 4;
 %     mB = mask == 3 | mask == 4;
 %     maskRGB = double(cat(3,mR,mG,mB));
-    
-    % Show input
+%     
+%     % Show input
 %     figure(1), sgtitle(['Image: ', num2str(i)])
 %     subplot 131, imshow(image)
 %     subplot 132, imshow(maskRGB)
@@ -47,7 +47,7 @@ for i = 1:numFiles
 %     fat = blurryImage > 0.5;
 
     %% Detect necrosis
-    minRadius = 5;
+    minRadius = 6;
     maxRadius = 11;
     [centersDark, radiiDark] = imfindcircles(image,[minRadius, maxRadius],'ObjectPolarity','dark');
 
@@ -80,9 +80,10 @@ for i = 1:numFiles
     %% Feature maps
 %     edgeImage = edge(grayImage,'Sobel');
     gradImage = imgradient(grayImage,'Sobel');
-    filtImage = medfilt2(gradImage,[25 25],'symmetric');
-%     filtImage = imgaussfilt(gradImage, 2);
+%     filtImage = medfilt2(gradImage,[25 25],'symmetric');
+    filtImage = imgaussfilt(gradImage, 4);
     thres = graythresh(filtImage);
+%     thres = graythresh(gradImage)
     
 %     figure(2);
 %     subplot 121, imshow(edgeImage)
@@ -140,9 +141,12 @@ for i = 1:numFiles
     
     % Filter tumor
 %     maskTumor = imclose(maskTumor, strel('disk', 11));
-    maskTumor = bwareaopen(maskTumor, 2000);
+    maskTumor = bwareaopen(maskTumor, 3000);
     maskTumor = imfill(maskTumor, 'holes');
-    maskTumor = imclose(maskTumor, strel('disk', 11));
+    maskTumor = imclose(maskTumor, strel('disk', 17));
+    maskTumor = bwareaopen(~maskTumor, 2500);
+    maskTumor = ~maskTumor;
+    
 %     maskTumor = imopen(maskTumor, strel('disk', 11));
 %     maskTumor = bwareaopen(maskTumor, 2000);
 %     maskTumor = imfill(maskTumor, 'holes');
@@ -154,15 +158,15 @@ for i = 1:numFiles
     maskSeg = reshape(maskSeg, rows,cols);
     
     % Filter results
-    maskSeg = medfilt2(maskSeg,[15 15]);
+    maskSeg = medfilt2(maskSeg,[11 11]);
     
     %% Show segmentation
 %     mR = maskSeg == 1 | maskSeg == 4;
 %     mG = maskSeg == 2 | maskSeg == 4;
 %     mB = maskSeg == 3 | maskSeg == 4;
 %     maskRGB = double(cat(3,mR,mG,mB));
-    
-    % Show input
+%     
+%     % Show input
 %     figure(1)
 %     subplot 133, imshow(maskRGB)  
     

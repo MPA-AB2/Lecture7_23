@@ -36,9 +36,9 @@ for ind=1:length(info_img)
     img_thr(img_thr>4)=0;
     img_thr=medfilt2(img_thr,[25,25]);
 
-    nazev_new=['masky\',info_mask(ind).name];
+    nazev_new=[cesta_seg,'\',info_mask(ind).name];
     imwrite(img_thr,nazev_new)
 end
 toc
-% [dice_scores] = evaluate_segmentation(cesta, cesta_seg);
+% [dice_scores] = evaluate_segmentation(cesta, cesta_seg)
 end

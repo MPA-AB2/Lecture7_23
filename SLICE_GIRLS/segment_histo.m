@@ -158,7 +158,7 @@ for i = 1:numFiles
     maskSeg = reshape(maskSeg, rows,cols);
     
     % Filter results
-    maskSeg = medfilt2(maskSeg,[11 11]);
+%     maskSeg = medfilt2(maskSeg,[7 7]);
     
     %% Show segmentation
 %     mR = maskSeg == 1 | maskSeg == 4;

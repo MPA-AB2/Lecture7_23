@@ -1,15 +1,12 @@
 function  segment_histo(path_to_images, path_of_results)
-for a = 1: 2 : 41
-    num = num2str([a].','%02d')
-    img{a}=imread([path_to_images '\im' num '.png'])
-    masks{a}=imread(['mask' num '.png'])
-    
-end
-%%
-for iter = 1: 2 : 41
+segmented_mask_names = dir([path_to_images '\mask*.png']);
+images_names = {};
+for iter = 1: length(segmented_mask_names)
+    images_names{iter} = segmented_mask_names(iter).name(end-5:end-4);
+    img{iter}=imread([path_to_images '\im' images_names{iter} '.png']);
 
      im = img{iter};
-     im_anno = masks{iter};
+%      im_anno = masks{iter};
     
     im_CB = rgb2gray(im2double(im));
     
@@ -121,20 +118,20 @@ for iter = 1: 2 : 41
             end 
         end
     end
-    
-    subplot(221)
-    imshow(binaryImage)
-    subplot(222)
-    imshow(im_final)
-    subplot 223
-    imshow(im_anno,[])
-    title('Refernce')
-    subplot 224
-    imshow(finim,[])
+%     
+%     subplot(221)
+%     imshow(binaryImage)
+%     subplot(222)
+%     imshow(im_final)
+%     subplot 223
+%     imshow(im_anno,[])
+%     title('Refernce')
+%     subplot 224
+%     imshow(finim,[])
 
 
-num = num2str([iter].','%02d')
-cesta = [path_of_results '\mask',num,'.png']
+% num = num2str(images_names{iter}.','%02d')
+cesta = [path_of_results '\mask',images_names{iter},'.png'];
 imwrite(finim, cesta)
 end
 

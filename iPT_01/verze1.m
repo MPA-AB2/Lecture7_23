@@ -93,8 +93,8 @@ im=img{a};
 imsize=size(im);
 C = semanticseg(imresize(im, [400 600]),net);
 A=zeros(size(C));
-for i=1:200
-    for j=1:296
+for i=1:400
+    for j=1:600
         if C(i,j)=="background"
             A(i,j)=0;
         elseif C(i,j)=="tumour"
@@ -115,6 +115,16 @@ imshow(B,[])
 
 B = uint8(B);
 % imshow(B)
+B = medfilt2(B,[5 5]);
+se = offsetstrel('ball',10,10);
+B = imdilate(B,se);
+B = uint8(B);
+% B(B==8)=0;
+% B(B==9)=1;
+% B(B==10)=2;
+% B(B==11)=3;
+% B(B==12)=4;
+
 
 cesta = ['V:\AB2\Lecture7_data\my_mask\mask',num,'.png']
 imwrite(B, cesta)
@@ -128,8 +138,8 @@ cesta_stara = 'V:\AB2\Lecture7_data\masks'
 
 
 %%
-obr1 = imread('V:\AB2\Lecture7_data\my_mask\mask09.png')
-obr2=imread('V:\AB2\Lecture7_data\masks\mask09.png')
+obr1 = imread('V:\AB2\Lecture7_data\my_mask\mask07.png')
+obr2=imread('V:\AB2\Lecture7_data\masks\mask07.png')
 
 subplot 211
 imshow(obr1,[])
